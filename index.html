@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arte em Pinus — Artefatos Artesanais em Madeira</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --marrom: #2C1A0E;
+      --terracota: #B85C2A;
+      --bege: #F7F2EA;
+      --bege2: #EEE6D8;
+      --texto: #4A3728;
+      --claro: #D4C4B0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bege);
+      color: var(--texto);
+    }
+
+    /* WHATSAPP FIXO */
+    .wpp-fixed {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      background: #25D366;
+      color: white;
+      border-radius: 50px;
+      padding: 13px 22px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+      letter-spacing: 0.3px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wpp-fixed:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+    .wpp-fixed svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+    /* HEADER */
+    header {
+      background: var(--marrom);
+      padding: 16px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      gap: 24px;
+    }
+    header img.logo { height: 54px; border-radius: 6px; flex-shrink: 0; }
+    header nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    header nav a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+    header nav a:hover { color: white; background: rgba(255,255,255,0.08); }
+    header a.btn-contato {
+      background: var(--terracota);
+      color: white;
+      padding: 9px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    header a.btn-contato:hover { background: #9e4e24; }
+
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      background: var(--marrom);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      padding: 80px 60px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('Dois dispensers.jpeg') center/cover no-repeat;
+      opacity: 0.08;
+    }
+    .hero-text {
+      max-width: 500px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-logo {
+      display: block;
+      width: 160px;
+      border-radius: 8px;
+      margin-bottom: 36px;
+    }
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      line-height: 1.15;
+      color: white;
+      margin-bottom: 22px;
+      font-weight: 400;
+    }
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--claro);
+    }
+    .hero-text p {
+      font-size: 16px;
+      color: #b8a898;
+      line-height: 1.85;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+    .hero-text a.btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--terracota);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-text a.btn-hero:hover { background: #9e4e24; transform: translateY(-1px); }
+    .hero-text a.btn-hero svg { width: 18px; height: 18px; fill: white; }
+    .hero-img {
+      width: 400px;
+      max-width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* FAIXA */
+    .faixa {
+      background: var(--terracota);
+      padding: 18px 60px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+    .faixa span {
+      color: rgba(255,255,255,0.9);
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    .faixa span::before {
+      content: '— ';
+      opacity: 0.6;
+    }
+
+    /* SECAO PADRAO */
+    .secao {
+      padding: 90px 60px;
+    }
+    .secao-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--terracota);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+    .secao h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 400;
+      color: var(--marrom);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .secao .desc {
+      font-size: 15px;
+      color: #7a6558;
+      line-height: 1.8;
+      max-width: 560px;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+
+    /* GALERIA */
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .galeria-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 3px;
+      filter: brightness(0.97);
+      transition: filter 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+    .galeria-grid img:hover { filter: brightness(1.03); transform: scale(1.01); }
+
+    .btn-secao {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--marrom);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.4px;
+      transition: background 0.2s;
+    }
+    .btn-secao:hover { background: #4a2e1a; }
+    .btn-secao svg { width: 17px; height: 17px; fill: white; }
+    .btn-secao.verde { background: #1ea855; }
+    .btn-secao.verde:hover { background: #178a46; }
+
+    /* SUPORTES */
+    .secao-suportes {
+      background: var(--bege);
+    }
+    .suportes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .suporte-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 3px;
+      transition: transform 0.3s;
+    }
+    .suporte-card img:hover { transform: scale(1.02); }
+    .suporte-card p {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #7a6558;
+      font-weight: 300;
+    }
+
+    /* INFANTIL */
+    .secao-infantil {
+      background: var(--bege2);
+    }
+    .infantil-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .infantil-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 3px;
+      transition: transform 0.3s;
+    }
+    .infantil-grid img:hover { transform: scale(1.01); }
+
+    /* QUEM SOMOS */
+    .quem-somos {
+      background: var(--marrom);
+      padding: 90px 60px;
+      display: flex;
+      gap: 80px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .quem-somos-texto { max-width: 520px; }
+    .quem-somos-texto .secao-label { color: var(--claro); }
+    .quem-somos-texto h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 400;
+      color: white;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .quem-somos-texto p {
+      font-size: 15px;
+      color: #b8a898;
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 36px;
+    }
+    .quem-somos-img {
+      flex: 1;
+      min-width: 280px;
+    }
+    .quem-somos-img img {
+      width: 100%;
+      border-radius: 3px;
+      filter: grayscale(20%) brightness(0.85);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #180e07;
+      padding: 28px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer img { height: 40px; border-radius: 4px; opacity: 0.85; }
+    footer nav { display: flex; gap: 28px; }
+    footer nav a {
+      color: #7a6558;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    footer nav a:hover { color: #b8a898; }
+    footer small { color: #4a3728; font-size: 12px; }
+
+    /* RESPONSIVO */
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.aberto { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .lightbox-fechar {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      background: none;
+      border: none;
+    }
+    .lightbox-fechar:hover { opacity: 1; }
+
+    /* HAMBURGUER */
+    .hamburguer {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburguer span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburguer.aberto span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburguer.aberto span:nth-child(2) { opacity: 0; }
+    .hamburguer.aberto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .menu-mobile {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: var(--marrom);
+      z-index: 99;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .menu-mobile.aberto { display: block; }
+    .menu-mobile a {
+      display: block;
+      padding: 14px 24px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+    .menu-mobile a:hover { background: rgba(255,255,255,0.06); color: white; }
+    .menu-mobile a.contato {
+      margin: 12px 24px 0;
+      background: var(--terracota);
+      color: white;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .menu-mobile a.contato:hover { background: #9e4e24; }
+
+    @media (max-width: 900px) {
+      header { padding: 14px 20px; }
+      header nav { display: none; }
+      header a.btn-contato { display: none; }
+      .hamburguer { display: flex; }
+
+      .hero { padding: 50px 20px; gap: 32px; min-height: auto; flex-direction: column; }
+      .hero-text { max-width: 100%; }
+      .hero-text h1 { font-size: 30px; }
+      .hero-logo { width: 120px; margin-bottom: 24px; }
+      .hero-img { width: 100%; max-height: 320px; }
+
+      .faixa { padding: 14px 20px; gap: 16px; justify-content: flex-start; }
+      .faixa span { font-size: 11px; }
+
+      .secao { padding: 50px 20px; }
+      .secao h2 { font-size: 28px; }
+
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .suportes-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .infantil-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+      .quem-somos { padding: 50px 20px; gap: 32px; flex-direction: column; }
+      .quem-somos-img { min-width: unset; width: 100%; }
+
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
+      footer nav { flex-wrap: wrap; gap: 16px; }
+
+      .wpp-fixed { bottom: 16px; right: 16px; padding: 11px 18px; font-size: 13px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text h1 { font-size: 26px; }
+      .galeria-grid { grid-template-columns: 1fr; }
+      .suportes-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WHATSAPP FIXO -->
+  <a class="wpp-fixed" href="https://wa.me/5515996147878?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20produtos." target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar no WhatsApp
+  </a>
+
+  <!-- HEADER -->
+  <header>
+    <img class="logo" src="logo arte pinus att.png" alt="Arte em Pinus" />
+    <nav>
+      <a href="#dispenser">Dispenser</a>
+      <a href="#infantil">Linha Infantil</a>
+      <a href="#suportes">Suportes</a>
+    </nav>
+    <a class="btn-contato" href="https://wa.me/5515996147878?text=Olá!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido." target="_blank">Contato</a>
+    <button class="hamburguer" id="hamburguer" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- MENU MOBILE -->
+  <div class="menu-mobile" id="menuMobile">
+    <a href="#dispenser" onclick="fecharMenu()">Dispenser</a>
+    <a href="#infantil" onclick="fecharMenu()">Linha Infantil</a>
+    <a href="#suportes" onclick="fecharMenu()">Suportes</a>
+    <a class="contato" href="https://wa.me/5515996147878?text=Olá!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" onclick="fecharMenu()">Falar no WhatsApp</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <img class="hero-logo" src="logo arte pinus att.png" alt="Arte em Pinus" />
+      <h1>O presente perfeito para os momentos <em>que ficam na memória.</em></h1>
+      <p>Dispensers artesanais personalizados com o escudo do seu time, mesas e cadeiras infantis e muito mais — tudo feito à mão em madeira de pinus, em Sorocaba.</p>
+      <a class="btn-hero" href="https://wa.me/5515996147878?text=Olá!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido." target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quero fazer um pedido
+      </a>
+    </div>
+    <img class="hero-img" src="Dois dispensers.jpeg" alt="Dispensers artesanais Arte em Pinus" />
+  </section>
+
+  <!-- FAIXA -->
+  <div class="faixa">
+    <span>Feito à mão</span>
+    <span>Madeira de pinus</span>
+    <span>Personalizado com seu time</span>
+    <span>Sorocaba, SP</span>
+  </div>
+
+  <!-- DISPENSER -->
+  <section class="secao" id="dispenser">
+    <p class="secao-label">Destaque da casa</p>
+    <h2>Dispenser de bebidas artesanal</h2>
+    <p class="desc">Base em madeira maciça, acabamento em latão e personalização com o escudo do seu time. Acompanha copo e porta-copo. Um presente que ninguém esquece.</p>
+    <div class="galeria-grid">
+      <img src="Dois dispensers.jpeg" alt="Dispensers artesanais" />
+      <img src="dispenser times foto real.jpg" alt="Dispenser com times" />
+      <img src="Modelos dispenser.jpeg" alt="Modelos de dispenser" />
+    </div>
+    <a class="btn-secao verde" href="https://wa.me/5515996147878?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20dispenser%20de%20bebidas." target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Pedir o meu dispenser
+    </a>
+  </section>
+
+  <!-- SUPORTES -->
+  <section class="secao secao-suportes" id="suportes">
+    <p class="secao-label">Para a sua cozinha</p>
+    <h2>Suportes artesanais em madeira</h2>
+    <p class="desc">Suportes de panela e para botijão de gás — funcionais, bonitos e feitos à mão. Madeira de pinus com acabamento natural que combina com qualquer cozinha.</p>
+    <div class="suportes-grid">
+      <div class="suporte-card">
+        <img src="suporte de panela.jpg" alt="Suporte de panela" />
+        <p>Suporte de panela</p>
+      </div>
+      <div class="suporte-card">
+        <img src="suporte de panela 2.jpg" alt="Suporte de panela" />
+        <p>Suporte de panela</p>
+      </div>
+      <div class="suporte-card">
+        <img src="suporte de panela com rodinha.jpg" alt="Suporte com rodinha" />
+        <p>Suporte com rodinhas</p>
+      </div>
+      <div class="suporte-card">
+        <img src="suporte para gás com rodinha.jpg" alt="Suporte para gás" />
+        <p>Suporte para botijão de gás</p>
+      </div>
+    </div>
+    <a class="btn-secao verde" href="https://wa.me/5515996147878?text=Olá!%20Quero%20saber%20mais%20sobre%20os%20suportes%20de%20madeira." target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Quero um suporte
+    </a>
+  </section>
+
+  <!-- INFANTIL -->
+  <section class="secao secao-infantil" id="infantil">
+    <p class="secao-label">Linha infantil</p>
+    <h2>Conjuntos de mesa e cadeiras para crianças</h2>
+    <p class="desc">Coloridos, resistentes e seguros. Feitos em madeira de pinus para crianças de 1 a 12 anos — com cadeiras que sustentam até 80kg e acabamento não tóxico.</p>
+    <div class="infantil-grid">
+      <img src="Combo Sofi.jpg" alt="Conjunto Sofi" />
+      <img src="colorido.jpg" alt="Conjunto colorido" />
+      <img src="laranja e vermelho.jpg" alt="Conjunto laranja e vermelho" />
+    </div>
+    <a class="btn-secao verde" href="https://wa.me/5515996147878?text=Olá!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20as%20mesas%20e%20cadeiras%20para%20crianças." target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Ver conjuntos infantis
+    </a>
+  </section>
+
+  <!-- QUEM SOMOS -->
+  <section class="quem-somos">
+    <div class="quem-somos-texto">
+      <p class="secao-label">Quem faz</p>
+      <h2>Um negócio de família, em Sorocaba</h2>
+      <p>Cada peça que sai daqui foi pensada, cortada e acabada à mão. Não é produção em série — é artesanato de verdade, com o cuidado de quem coloca o próprio nome no que faz. Trabalhamos com madeira de pinus há anos e conhecemos cada detalhe do material.</p>
+      <a class="btn-secao verde" href="https://wa.me/5515996147878?text=Olá!%20Vim%20pelo%20site%20e%20quero%20conhecer%20mais%20os%20produtos." target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar com a gente
+      </a>
+    </div>
+    <div class="quem-somos-img">
+      <img src="Modelos dispenser.jpeg" alt="Trabalho artesanal Arte em Pinus" />
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="logo arte pinus att.png" alt="Arte em Pinus" />
+    <nav>
+      <a href="https://instagram.com/arte.em.pinus.sorocaba" target="_blank">Instagram</a>
+      <a href="https://wa.me/5515996147878" target="_blank">WhatsApp</a>
+    </nav>
+    <small>© 2026 Arte em Pinus · Sorocaba, SP</small>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-fechar" id="lightboxFechar">&times;</button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script>
+    // LIGHTBOX
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    document.querySelectorAll('.galeria-grid img, .infantil-grid img, .suportes-grid img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('aberto');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.getElementById('lightboxFechar').addEventListener('click', fecharLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) fecharLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') fecharLightbox(); });
+    function fecharLightbox() {
+      lightbox.classList.remove('aberto');
+      document.body.style.overflow = '';
+    }
+
+    // MENU MOBILE
+    const btn = document.getElementById('hamburguer');
+    const menu = document.getElementById('menuMobile');
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('aberto');
+      menu.classList.toggle('aberto');
+    });
+    function fecharMenu() {
+      btn.classList.remove('aberto');
+      menu.classList.remove('aberto');
+    }
+    // fecha ao clicar fora
+    document.addEventListener('click', (e) => {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) fecharMenu();
+    });
+  </script>
+</body>
+</html>
