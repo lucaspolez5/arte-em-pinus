@@ -387,6 +387,49 @@
     }
     .lightbox-fechar:hover { opacity: 1; }
 
+    /* FAQ */
+    .faq-lista { max-width: 720px; margin-top: 40px; }
+    .faq-item {
+      border-bottom: 1px solid var(--bege2);
+    }
+    .faq-pergunta {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--marrom);
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+    }
+    .faq-pergunta span {
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--terracota);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-pergunta.aberto span { transform: rotate(45deg); }
+    .faq-resposta {
+      display: none;
+      padding-bottom: 20px;
+    }
+    .faq-resposta.aberto { display: block; }
+    .faq-resposta p {
+      font-size: 15px;
+      color: #7a6558;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .faq-resposta p:last-child { margin-bottom: 0; }
+
     /* HAMBURGUER */
     .hamburguer {
       display: none;
@@ -593,6 +636,44 @@
     </a>
   </section>
 
+  <!-- FAQ -->
+  <section class="secao" id="faq">
+    <p class="secao-label">Dúvidas frequentes</p>
+    <h2>Perguntas mais comuns</h2>
+    <div class="faq-lista">
+
+      <div class="faq-item">
+        <button class="faq-pergunta">Como funciona a personalização?<span>+</span></button>
+        <div class="faq-resposta">
+          <p>É só nos chamar no WhatsApp e informar o que deseja — produto, modelo, seu nome, cidade e bairro. A gente cuida do resto.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pergunta">Qual o prazo de entrega?<span>+</span></button>
+        <div class="faq-resposta">
+          <p><strong>Dispensers e suportes:</strong> 3 dias para produção + envio para todo o Brasil.</p>
+          <p><strong>Linha infantil:</strong> 20 a 30 dias a partir da confirmação do pedido, dependendo da produção no momento. Entrega somente para Sorocaba/SP e cidades próximas.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pergunta">Como faço um pedido?<span>+</span></button>
+        <div class="faq-resposta">
+          <p>Pelo WhatsApp mesmo — é só mandar uma mensagem que a gente te orienta em tudo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pergunta">Os produtos têm garantia?<span>+</span></button>
+        <div class="faq-resposta">
+          <p>Sim. Todos os produtos têm garantia de 20 dias, exceto em casos de mau uso.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- QUEM SOMOS -->
   <section class="quem-somos">
     <div class="quem-somos-texto">
@@ -626,6 +707,22 @@
   </div>
 
   <script>
+    // FAQ ACORDEÃO
+    document.querySelectorAll('.faq-pergunta').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const resposta = btn.nextElementSibling;
+        const aberto = btn.classList.contains('aberto');
+        document.querySelectorAll('.faq-pergunta').forEach(b => {
+          b.classList.remove('aberto');
+          b.nextElementSibling.classList.remove('aberto');
+        });
+        if (!aberto) {
+          btn.classList.add('aberto');
+          resposta.classList.add('aberto');
+        }
+      });
+    });
+
     // LIGHTBOX
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
